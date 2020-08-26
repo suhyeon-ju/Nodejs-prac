@@ -6,6 +6,9 @@ var express = require('express')
 var bodyParser = require('body-parser')
     ,static = require('serve-static');
 
+var cookieParser = require('cookie-parser');
+
+
 //익스프레스 객체 생성
 var app = express();
 //기본 속성 설정 -> process.env의 기본 포트가 있으면 사용하거나 3000 사용
@@ -17,9 +20,31 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 //public 폴더 안에 있는 것 사용
 app.use('/public', static(path.join(__dirname, 'public')));
-
+app.use(cookieParser());
 
 var router = express.Router();
+
+router.route('/process/setUserCookie').get(function(req,res){
+    console.log('/process/setUserCookie 라우팅 함수 호출됨.');
+    
+    res.cookie('user', {
+        id:'mike',
+        name: '소녀시대',
+        authorized: true
+    });
+    res.redirect('/process/showCookie');
+});
+
+router.route('/process/showCookie').get(function(req,res){
+    console.log('/process/showCookie 라우팅 함수 호출됨.');
+    
+    res.send(req.cookies);
+});
+
+
+
+
+
 // /process/login이 루트로 들어온 것만 처리
 router.route('/process/login').post(function(req, res){
     console.log('/process/login 처리함.');

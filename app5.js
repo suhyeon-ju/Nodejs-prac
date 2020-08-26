@@ -20,7 +20,7 @@ app.use('/', function(req, res, next){
     
     res.writeHead('200', {'Content-Type': 'text/html;charset=utf8'});
 //    res.end('<h1>Express 서버에서'+ req.user + '가 응답한 결과입니다.</h1>');
-    res.end("<img src='/images/house1.png' width='100%'>");
+//    res.end("<img src='/images/house1.png' width='100%'>");
 });
 
 http.createServer(app).listen(3000, function(){
