@@ -84,8 +84,8 @@ router.route('/process/photo').post(upload.array('photo', 1), function(req, res)
             filename = '',
             mimetype = '',
             size = 0;
-            //배열에 들어가 있는 경우(설정에서 1개의 파일도 배열에 넣게 했음)
-            if(Array.isArray(files)){
+            //인자가 배열인지 확인(설정에서 1개의 파일도 배열에 넣게 했음)
+            if(Array.isArray(files)){ 
                 console.log("배열에 들어있는 파일 갯수 : %d", files.length);
                 
                 for(var index = 0; index < files.length; index++){

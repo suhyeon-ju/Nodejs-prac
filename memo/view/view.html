@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>메모 테스트</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="moment.min.js"></script>
+        <script>
+            $(function(){
+                var curDate = moment().format('YYYY-MM-DD HH:mm');
+                $('#createDate').attr('value', curDate);
+            });
+
+        </script>
+        <style>
+            table{
+            border-spacing: 20px;
+            border: 1px solid #444444;
+            }
+            tr{
+                width: 400px;
+            }
+            td{
+                width: 50px;
+            }
+            #btn1, #btn2{
+                
+                margin-left: 40px;
+                margin-right: auto;
+            }
+            #title{
+                text-align: center;
+                border-bottom: 1px solid #444444;
+            }
+        </style>
+    </head>
+<body>
+    
+    <br>
+    <form method="post" enctype="multipart/form-data" action="/process/memo">
+        <table>
+            <tr id="title">
+                <td colspan="2"><label>나의 메모</label></td>
+            </tr>
+            <tr>
+                <td><label>작성자</label></td>
+                <td><input type='text' name="author"></td>
+            </tr>
+            <tr>
+                <td><label>작성일시</label></td>
+                <td><input type='text' name="createDate" id="createDate"></td>
+            </tr>
+            <tr>
+                <td><label>내용</label></td>
+            </tr>
+            <tr>
+                <td colspan="2"><textarea cols="30" rows="10" name="content"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="저장" name="submit" id="btn1"></td>
+                <td><input type="button" value="닫기" id="btn2"> </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
